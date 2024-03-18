@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardController : MonoBehaviour
+public class MazeMovement : MonoBehaviour
 {
-    float rotationSpeed = 20f;
+    float rotationSpeed = 15f;
     float maxRotation = 15f;
 
     float currentXRotation = 0f;
     float currentZRotation = 0f;
 
-    // Propiedades para acceder a la rotación actual desde otros scripts
+    // Propiedades para acceder a la rotaciï¿½n actual desde otros scripts
     public float CurrentXRotation { get { return currentXRotation; } }
     public float CurrentZRotation { get { return currentZRotation; } }
 
     // Update is called once per frame
     void Update()
     {
-        // Actualizar la rotación en base a las teclas WASD
+        // Actualizar la rotaciï¿½n en base a las teclas WASD
         if (Input.GetKey(KeyCode.W))
         {
             currentXRotation += rotationSpeed * Time.deltaTime;
@@ -36,11 +36,11 @@ public class BoardController : MonoBehaviour
             currentZRotation -= rotationSpeed * Time.deltaTime;
         }
 
-        // Limitar la rotación
+        // Limitar la rotaciï¿½n
         currentXRotation = Mathf.Clamp(currentXRotation, -maxRotation, maxRotation);
         currentZRotation = Mathf.Clamp(currentZRotation, -maxRotation, maxRotation);
 
-        // Aplicar la rotación al tablero
+        // Aplicar la rotaciï¿½n al tablero
         transform.rotation = Quaternion.Euler(currentXRotation, 0f, currentZRotation);
     }
 }

@@ -22,34 +22,42 @@ public class CameraController : MonoBehaviour
 
     Vector2 rotation = Vector2.zero;
 
+    BallController ballController;
+
+    void Start()
+    {
+        Debug.Log("CameraController Start");
+        ballController = FindObjectOfType<BallController>();
+    }
+
     void Update()
     {
 
         // Check for arrow key presses
-        float horizontalInput = 0f;
-        float verticalInput = 0f;
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
         if (!Input.GetKey(KeyCode.Space))
         {
             return;
         }
-        
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            verticalInput = 1.0f;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            verticalInput = -1.0f;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            horizontalInput = -1.0f;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            horizontalInput = 1.0f;
-        }
+
+        // if (Input.GetKey(KeyCode.UpArrow))
+        // {
+        //     verticalInput = 1.0f;
+        // }
+        // else if (Input.GetKey(KeyCode.DownArrow))
+        // {
+        //     verticalInput = -1.0f;
+        // }
+        // if (Input.GetKey(KeyCode.LeftArrow))
+        // {
+        //     horizontalInput = -1.0f;
+        // }
+        // else if (Input.GetKey(KeyCode.RightArrow))
+        // {
+        //     horizontalInput = 1.0f;
+        // }
 
         // Calculate movement based on arrow key presses
         Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput).normalized * moveSpeed * Time.deltaTime;
@@ -62,7 +70,16 @@ public class CameraController : MonoBehaviour
         var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
         transform.localRotation = xQuat * yQuat;
 
-
-        
+    //     transform.position = ballController.transform.position + new Vector3(0, 10, 0);
+    //     Debug.Log("Ball position: " + ballController.transform.position);
     }
+
+    void LateUpdate()
+    {
+        // ... other code
+
+        // Look at the ball's position
+        // transform.LookAt(ballController.transform);
+    }
+
 }

@@ -7,11 +7,11 @@ public class MazeRenderer : MonoBehaviour
 
     [SerializeField]
     [Range(1, 50)]
-    private int width = 50;
+    private int width = 10;
 
     [SerializeField]
     [Range(1, 50)]
-    private int height = 50;
+    private int height = 10;
 
     [SerializeField]
     private Transform wallPrefab = null;
@@ -33,7 +33,7 @@ public class MazeRenderer : MonoBehaviour
     {
 
         var floor = Instantiate(floorPrefab, transform);
-        floor.localScale = new Vector3(1, 1f, 1);
+        floor.localScale = new Vector3(width, 1f, height);
         floor.localPosition = new Vector3(-0.5f, -0.5f, -0.5f);
 
         for (int i = 0; i < width; i++)

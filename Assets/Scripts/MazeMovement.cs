@@ -17,6 +17,10 @@ public class MazeMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            return;
+        }
         // Actualizar la rotaci�n en base a las teclas WASD
         if (Input.GetKey(KeyCode.W))
         {

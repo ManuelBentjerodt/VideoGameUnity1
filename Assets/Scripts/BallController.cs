@@ -27,16 +27,21 @@ public class BallController : MonoBehaviour
 
         // Apply force with multiplier
         rb.AddForce(forceDirection * forceMultiplier, ForceMode.Acceleration);
+
+        // if (transform.position.y < -2)
+        // {
+        //     transform.position = new Vector3(0, 1, 0);
+        // }
        
 
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision detected");
-        Debug.Log(rb.velocity);
-        // Cuando la pelota colisiona con otro objeto, calcula el vector de rebote
-        Vector3 newDirection = Vector3.Reflect(rb.velocity, collision.contacts[0].normal);
-        rb.velocity = newDirection;
+        // Debug.Log("Collision detected");
+        // Debug.Log(rb.velocity);
+        // // Cuando la pelota colisiona con otro objeto, calcula el vector de rebote
+        // Vector3 newDirection = Vector3.Reflect(rb.velocity, collision.contacts[0].normal);
+        // rb.velocity = newDirection;
     }
 }

@@ -131,6 +131,7 @@ public class MazeGenerator : MonoBehaviour
             }
         }
 
+        // return maze;
         return ApplyRecursiveBacktracker(maze, width, height);
     }
 }

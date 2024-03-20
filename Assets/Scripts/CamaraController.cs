@@ -34,31 +34,16 @@ public class CameraController : MonoBehaviour
     {
 
         // Check for arrow key presses
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        transform.position = ballController.transform.position + new Vector3(0, 10, -4);
+        Debug.Log("Ball position: " + ballController.transform.position);
 
         if (!Input.GetKey(KeyCode.Space))
         {
             return;
         }
 
-        // if (Input.GetKey(KeyCode.UpArrow))
-        // {
-        //     verticalInput = 1.0f;
-        // }
-        // else if (Input.GetKey(KeyCode.DownArrow))
-        // {
-        //     verticalInput = -1.0f;
-        // }
-        // if (Input.GetKey(KeyCode.LeftArrow))
-        // {
-        //     horizontalInput = -1.0f;
-        // }
-        // else if (Input.GetKey(KeyCode.RightArrow))
-        // {
-        //     horizontalInput = 1.0f;
-        // }
-
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
         // Calculate movement based on arrow key presses
         Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput).normalized * moveSpeed * Time.deltaTime;
         transform.Translate(movement);
@@ -70,14 +55,10 @@ public class CameraController : MonoBehaviour
         var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
         transform.localRotation = xQuat * yQuat;
 
-    //     transform.position = ballController.transform.position + new Vector3(0, 10, 0);
-    //     Debug.Log("Ball position: " + ballController.transform.position);
     }
 
     void LateUpdate()
     {
-        // ... other code
-
         // Look at the ball's position
         // transform.LookAt(ballController.transform);
     }
